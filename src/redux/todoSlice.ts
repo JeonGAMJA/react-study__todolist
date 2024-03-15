@@ -26,9 +26,12 @@ export const todoSlice = createSlice({
     deleteTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload)
     },
-    editTodo: (state, action) => {
-      state
-      //   state.todos.map((todo) => (todo.id === action.payload ? '수정' : state))
+    editTodo: (state, action: PayloadAction<{ id: string; newText: string }>) => {
+      console.log(action)
+      const { id, newText } = action.payload
+      state.todos = state.todos.map((todo) =>
+        todo.id === id ? { ...todo, text: newText } : todo,
+      )
     },
   },
 })

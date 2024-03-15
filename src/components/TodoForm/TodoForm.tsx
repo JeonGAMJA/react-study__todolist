@@ -19,6 +19,7 @@ const TodoForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(addTodo(inputValue))
+    setInputValue('')
   }
 
   return (
